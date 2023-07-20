@@ -12,21 +12,24 @@ def input_error(func):
             return "Invalid input. Please enter name and phone number separated by a space."
     return inner
 
+def split_command(command):
+    return command.split()
+
 @input_error
 def add_contact(command):
-    _, name, phone = command.split()
+    _, name, phone = split_command(command)
     contacts[name] = phone
     return "Contact added successfully."
 
 @input_error
 def change_phone(command):
-    _, name, phone = command.split()
+    _, name, phone = split_command(command)
     contacts[name] = phone
     return "Phone number updated successfully."
 
 @input_error
 def get_phone(command):
-    _, name = command.split()
+    _, name = split_command(command)
     return contacts[name]
 
 def show_all_contacts():
@@ -72,3 +75,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
