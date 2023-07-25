@@ -22,6 +22,8 @@ def split_command(command):
     name = " ".join(parts[1:-1])
     phone = parts[-1]
     return parts[0], name, phone
+
+
 @input_error
 def add_contact(command):
     _, name, phone = split_command(command)
@@ -33,15 +35,6 @@ def add_contact(command):
 
     record.add_phone(phone)
     return "Contact added successfully."
-
-
-# @input_error
-# def add_contact(command):
-#     _, name, phone = split_command(command)
-#     record = Record(name)
-#     record.add_phone(phone)
-#     contacts.add_record(record)
-#     return "Contact added successfully."
 
 @input_error
 def change_phone(command):
@@ -74,6 +67,13 @@ def show_all_contacts():
         return result_str
 
 def main():
+    print("Welcome to the Address Book CLI.")
+    print("Available commands:")
+    print("1. add <name> <phone> - add a contact with the given name and phone number")
+    print("2. change <name> <old_phone> <new_phone> - change the phone number of a contact")
+    print("3. show all - display all contacts in the address book")
+    print("4. good bye/exit/close - exit the program")
+
     print("How can I help you?")
 
     while True:
