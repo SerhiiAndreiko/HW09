@@ -1,0 +1,85 @@
+Це все GPT написав!!!!!
+Приклад 1. Привітання:
+
+Welcome to the Address Book CLI
+Enter your command:hello
+Hello! How can I help you?
+Enter your command:good bye
+Good bye
+
+Приклад 2. Додати нового контакта:
+
+Welcome to the Address Book CLI
+Enter your command:add John Doe +123456789
+Done
+Enter your command:good bye
+Good bye
+
+Приклад 3. Змінити телефон контакта:
+
+Welcome to the Address Book CLI
+Enter your command:add John Doe +123456789
+Done
+Enter your command:change John Doe +987654321
+Done
+Enter your command:phone John Doe
++987654321
+Enter your command:good bye
+Good bye
+
+Приклад 4. Видалити контакт:
+
+Welcome to the Address Book CLI
+Enter your command:add John Doe +123456789
+Done
+Enter your command:delete record John Doe
+Done
+Enter your command:show all
+No users found, you must first add name and phone
+Enter your command:good bye
+Good bye
+
+Приклад 5. Видалити телефон із контакта:
+
+Welcome to the Address Book CLI
+Enter your command:add John Doe +123456789
+Done
+Enter your command:delete phone John Doe +123456789
+Done
+Enter your command:show all
+Name: John Doe, Phones: No phone number found.
+Enter your command:good bye
+Good bye
+
+Приклад 6. Показати телефон контакта:
+
+Welcome to the Address Book CLI
+Enter your command:add John Doe +123456789
+Done
+Enter your command:show phone John Doe
++123456789
+Enter your command:good bye
+Good bye
+
+Приклад 7. Показати всі контакти:
+
+Welcome to the Address Book CLI
+Enter your command:add John Doe +123456789
+Done
+Enter your command:add Jane Smith +987654321
+Done
+Enter your command:show all
+Name: John Doe, Phones: +123456789
+Name: Jane Smith, Phones: +987654321
+Enter your command:good bye
+Good bye
+
+Приклад 8. Вивести допомогу:
+
+Welcome to the Address Book CLI
+Enter your command:help
+List of commands: hello, add, change, phone, show all, delete record, delete phone, help, good bye, close, exit
+Enter your command:help add
+Add user and phone. Required username and phone.
+Enter your command:good bye
+Good bye
