@@ -19,37 +19,30 @@ def input_error(func):
             return "Sorry, there are not enough parameters or their value may be incorrect. "\
                    "Please use the help for more information."
         except Exception as e:
-            return "**** Exception other" + e
+            return "**** Exception other" + str(e)
     return wrapper    
-
-
 @input_error
 def command_add(*args) -> str:
-    user = args[0]
-    args[1]
-    phone = [ ab.Phone(p) for p in args[1:] ]
-    if user in a_book:
-        a_book.get_record(user).add_phone(phone)
-    else:
-        rec = ab.Record(ab.Name(user), phone)
-        a_book.add_record(rec)
+    name = ab.Name(args[0])
+    phone = ab.Phone(args[1])
+    if str(name) in a_book.data:
+        return "Record with such name already exists. If you want to change the phone number, use the 'change' command"
+    rec = ab.Record(name, phone)
+    a_book.add_record(rec)
     return "Done"
-
-
 
 @input_error
 def command_change_phone(*args) -> str:
     user = args[0]
-    old_phone = args[1]
-    new_phone = args[2]
-    a_book.get_record(user).change_phone(ab.Phone(old_phone), ab.Phone(new_phone))
+    new_phone = args[1]
+    a_book.get_record(user).change_phone(ab.Phone(new_phone))
     return "Done"
 
 
 @input_error
 def command_show_phone(*args) -> str:
     user = args[0]
-    return a_book.get_record(user).get_phones()
+    return a_book.get_record(user).get_phone()
 
 
 def command_show_all(*args) -> str:
@@ -71,8 +64,7 @@ def command_delete_record(*args) -> str:
 @input_error
 def command_delete_phone(*args) -> str:
     user = args[0]
-    phone = args[1]
-    a_book.get_record(user).remove_phone(ab.Phone(phone))
+    a_book.get_record(user).change_phone(None)
     return "Done" 
 
 def command_help(*args) -> str:
@@ -85,7 +77,7 @@ def command_help(*args) -> str:
         return COMMANDS_HELP.get(command,  f"Help for this command '{command}' is not yet available")
 
 
-COMMAND_EXIT=("good bye", "close", "exit")
+COMMAND_EXIT=("good bye", "close", "exit", "q")
 
 COMMANDS = {
     "hello": greetings,

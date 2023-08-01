@@ -34,59 +34,54 @@ class Name(Field):
     pass
 
 class Phone(Field):
-     def __init__(self, phone):
-         super().__init__(phone) 
-     def __eq__(self, other):
-        if isinstance(other, Phone):
-            return self.value == other.value
-        return False
+    pass
 
 class Record:
     def __init__(self, name: Name, phone: Phone = None,) -> None:
         self.name = name
-        self.phones = []
-        self.add_phone(phone)
+        self.phone = phone
 
-    def add(self, field: Field) -> bool:
-        if isinstance(field, Phone):
-            return self.add_phone(field)
+    def add_phone(self, phone: Phone) -> bool:
+            if phone and self.phone is None:
+                self.phone = phone
+                return True
+            return False
+    # def add(self, field: Field) -> bool:
+    #     if isinstance(field, Phone):
+    #         return self.add_phone(field)
+    #     else:
+    #         return False
             
     def remove(self, field: Field) -> bool:
         if isinstance(field, Phone):
             return self.remove_phone(field)
-   
-
-    def add_phone(self, phone: Phone) -> bool:
-        if phone and phone not in self.phones:
-            self.phones.append(phone)
-            return True
-        return False
+        else:
+            return False
+    
             
-    def change_phone(self, old_phone: Phone, new_phone: Phone) -> None:
-        if old_phone and new_phone:
-            self.remove_phone(old_phone)
-            self.add_phone(new_phone)
+    def change_phone(self, new_phone: Phone) -> None:
+        self.phone = new_phone
 
 
     def __eq__(self, other):
         if isinstance(other, Record):
-            return self.name == other.name and self.phones == other.phones
+            return self.name == other.name and self.phone == other.phone
         return False
 
     def remove_phone(self, phone: Phone) -> None:
-        self.phones.remove(phone)
-        return True
-
-    def get_phones(self) -> str:
-        return ",".join([str(ph) for ph in self.phones])
+        if phone in self.phone:
+            del self.phone[phone]
+            return True
+        return False
+    
+    def get_phone(self) -> str:
+        return str(self.phone)
 
     def __repr__(self):
         return str(self)
 
     def __str__(self) -> str:
-        result = [f"name: {self.name}"]
-        if self.phones:
-            result.append(f"phones: {self.get_phones()}")    
-        return ", ".join(result)
+        return f"name: {self.name}, phone: {self.get_phone()}"
+
 
 
